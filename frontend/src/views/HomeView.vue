@@ -1,15 +1,22 @@
 <template>
-	<hello-world />
+	<div>
+		<MainHome></MainHome>
+		<PostPagination></PostPagination>
+	</div>
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld';
-
+import MainHome from '@/components/home/MainHome.vue';
+import PostPagination from '@/components/PostPagination.vue';
 export default {
-	name: 'Home',
-
-	components: {
-		HelloWorld,
+	components: { MainHome, PostPagination },
+	data() {
+		return {};
 	},
+	setup() {},
+	created() {},
+	mounted() {},
+	unmounted() {},
+	methods: {},
 };
 </script>
