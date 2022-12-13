@@ -34,4 +34,4 @@ class CommentSerializer(serializers.ModelSerializer):
         
 class TotalImageSerializer(serializers.Serializer):
     images = serializers.ListField(child=serializers.CharField())
-    thumbnail = ThumbnailSerializer(many=True)
+    thumbnail = serializers.ListField(child=serializers.CharField())

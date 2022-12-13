@@ -23,7 +23,7 @@ class PostDetailAPIView(RetrieveAPIView):
 
 
 # 특정 게시글의 사진 불러오기
-class PostTotalImageListAPIView(RetrieveAPIView):
+class PostDetailImageListAPIView(RetrieveAPIView):
     queryset = Post
     serializer_class = PostDetailImageSerializer
     
@@ -58,14 +58,15 @@ class CommentListAPIView(ListAPIView):
         serializer = self.get_serializer(instance=data, many=True)
         return Response(serializer.data)
     
-    
+
+# 여기서부터 하면 됨!  
 class TotalImageListAPIView(ListAPIView):
     serializer_class = TotalImageSerializer
     
     def get(self, request, *args, **kwargs):
+        thumbnail = Post.objects.values_list('thumbnail', flat=True)
+        images = PostImage.objects.values_list('image', flat=True)
         
-        images = PostImage.objects.prefetch_related('post').all()
-        print(images)
         data = {
            'thumbnail' : thumbnail,
            'images' : images
